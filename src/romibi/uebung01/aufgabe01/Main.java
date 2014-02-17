@@ -8,7 +8,7 @@ public class Main {
 		new Thread() {
 			public void run() {
 				try {
-					ConsoleTicker.periodTicker('c', 20);
+					ConsoleTicker.periodTicker('c', 30);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
