@@ -5,7 +5,6 @@ public class ThreadTicker extends Thread {
 		try {
 			ConsoleTicker.periodTicker('a', 10);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

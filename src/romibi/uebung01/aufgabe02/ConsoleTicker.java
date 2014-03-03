@@ -11,6 +11,5 @@ public class ConsoleTicker {
 
 	public static void main(String[] args) throws InterruptedException {
 		periodTicker('.', 10);
-		// TODO: Concurrent periodTicker('*', 20);
 	}
 }

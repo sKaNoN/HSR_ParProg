@@ -5,7 +5,6 @@ public class RunnableTicker implements Runnable {
 		try {
 			ConsoleTicker.periodTicker('b', 20);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
