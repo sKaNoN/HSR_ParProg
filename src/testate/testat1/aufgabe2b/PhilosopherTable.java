@@ -42,16 +42,17 @@ class Philosopher extends Thread {
 	private void takeForks() throws InterruptedException {
 		philoState = PhiloState.hungry;
 		table.notifyStateChange(this);
-		
+
 		int leftForkNo = table.leftForkNumber(id);
 		int rightForkNo = table.rightForkNumber(id);
-		
+
 		table.acquireFork(leftForkNo);
+
 		while (!table.tryAcquireFork(rightForkNo)) {
 			System.out.println("Philosophers " + getId() + " retries...");
 			table.releaseFork(leftForkNo);
 			sleep(500);
-			table.acquireFork(leftForkNo);	
+			table.acquireFork(leftForkNo);
 		}
 	}
 

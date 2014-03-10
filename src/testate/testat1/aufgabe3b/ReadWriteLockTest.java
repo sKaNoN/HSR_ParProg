@@ -41,7 +41,7 @@ public class ReadWriteLockTest extends ConcurrentTest {
 
 	@Test(timeout = TIMEOUT)
 	public void testWriteRead() throws InterruptedException {
-
+		rwLock = new UpgradeableReadWriteLock();
 		rwLock.writeLock();
 		Thread t2 = new Thread() {
 			@Override

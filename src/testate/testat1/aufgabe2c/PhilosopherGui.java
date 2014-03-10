@@ -1,4 +1,4 @@
-package testate.testat1.aufgabe2a;
+package testate.testat1.aufgabe2c;
 
 import java.awt.Color;
 import java.awt.Dimension;

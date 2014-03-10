@@ -1,4 +1,4 @@
-package testate.testat1.aufgabe2a;
+package testate.testat1.aufgabe2c;
 
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
@@ -43,9 +43,14 @@ class Philosopher extends Thread {
 		philoState = PhiloState.hungry;
 		table.notifyStateChange(this);
 		// try to get the forks
-		table.acquireFork(table.leftForkNumber(id));
-		sleep(500);
-		table.acquireFork(table.rightForkNumber(id));
+
+		int lowerFork = table.leftForkNumber(id)<table.rightForkNumber(id)?table.leftForkNumber(id):table.rightForkNumber(id);
+		
+		int higherFork = table.leftForkNumber(id)>table.rightForkNumber(id)?table.leftForkNumber(id):table.rightForkNumber(id);
+
+			table.acquireFork(lowerFork);
+			sleep(500);
+			table.acquireFork(higherFork);	
 	}
 
 	private void putForks() {

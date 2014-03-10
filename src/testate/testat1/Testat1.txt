@@ -1,0 +1,17 @@
+Testat 1
+
+Aufgabe 1
+Race Condition auf latch.
+Thread mit id 2 könnte bereits in nächster Runde sein während
+Thread 0 noch versucht den latch neu zu setzen.
+Wäre umsetzbar mit 2 Latches welche abwechselnd für die übernächste Runde gesetzt werden.
+
+
+Aufgabe 2b
+Es gibt ein Starvation Problem.
+Zwar wird der Deadlock behoben, jedoch können gewisse Threads benachteiligt werden. 
+
+Aufgabe 3a
+Wenn mehrere upgradeableReadLocks auf eine Resource zugreifen, könnte es einen Deadlock auslösen.
+(Gleiches Problem wie verschachtelte Semaphore.)
+Beide warten auf Freigabe des ReadLocks des anderen Threads, damit sie den WriteLock setzen können.

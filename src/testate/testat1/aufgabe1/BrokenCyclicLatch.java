@@ -14,7 +14,7 @@ public class BrokenCyclicLatch {
 			latch.countDown();
 			latch.await();
 			if (threadId == 0) {
-				latch = new CountDownLatch(NOF_THREADS); // new latch for new
+				latch = new CountDownLatch(NOF_THREADS); // new latch for new //
 															// round
 			}
 			System.out.println("Round " + round + " thread " + threadId);

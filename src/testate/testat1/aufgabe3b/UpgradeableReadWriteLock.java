@@ -1,29 +1,47 @@
 package testate.testat1.aufgabe3b;
 
 public class UpgradeableReadWriteLock {
-	// TODO: Implement
+	private int readCount = 0;
+	private Thread upgradeableLockHolder = null;
+	private boolean hasWriteLock = false;
 
-	public void readLock() throws InterruptedException {
-		// TODO:
+	public synchronized void readLock() throws InterruptedException {
+		while (hasWriteLock) {
+			wait();
+		}
+		readCount++;
+		notifyAll();
 	}
 
-	public void readUnlock() {
-		// TODO:
+	public synchronized void readUnlock() {
+		readCount--;
+		notifyAll();
 	}
 
-	public void upgradeableReadLock() throws InterruptedException {
-		// TODO:
+	public synchronized void upgradeableReadLock() throws InterruptedException {
+		while (hasWriteLock || upgradeableLockHolder!=null) {
+			wait();
+		}
+		upgradeableLockHolder = Thread.currentThread();
+		notifyAll();
 	}
 
-	public void upgradeableReadUnlock() {
-		// TODO:
+	public synchronized void upgradeableReadUnlock() {
+		upgradeableLockHolder = null;
+		notifyAll();
 	}
 
-	public void writeLock() throws InterruptedException {
-		// TODO:
+	public synchronized void writeLock() throws InterruptedException {
+		if (readCount > 0 || hasWriteLock || (upgradeableLockHolder!=Thread.currentThread() && upgradeableLockHolder!=null)) {
+			wait();
+		}
+		hasWriteLock = true;
+		notifyAll();
+		
 	}
 
-	public void writeUnlock() {
-		// TODO:
+	public synchronized void writeUnlock() {
+		hasWriteLock = false;
+		notifyAll();
 	}
 }
