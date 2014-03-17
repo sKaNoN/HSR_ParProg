@@ -1,4 +1,6 @@
-Testat 1
+ParProg - Testat 1 
+Bislin Rolf
+Haltmeier Pascal
 
 Aufgabe 1
 Race Condition auf latch.
@@ -7,11 +9,25 @@ Thread 0 noch versucht den latch neu zu setzen.
 Wäre umsetzbar mit 2 Latches welche abwechselnd für die übernächste Runde gesetzt werden.
 
 
+Aufgabe 2a
+Siehe Betriebsmittelgraph.jpg
+
+
 Aufgabe 2b
 Es gibt ein Starvation Problem.
-Zwar wird der Deadlock behoben, jedoch können gewisse Threads benachteiligt werden. 
+Zwar wird der Deadlock behoben, jedoch können gewisse Threads benachteiligt werden.
+
+
+Aufgabe 2c
+Siehe Ordner aufgabe2c -> PhilosopherTable.java -> Methode takeForks()
+(Anstelle von jeweils der linken Gabel, wird immer zuerst die mit der kleineren ID aufgenommen. Das Deadlock-Problem wird behoben, ohne eine Starvation auszulösen) 
+
 
 Aufgabe 3a
 Wenn mehrere upgradeableReadLocks auf eine Resource zugreifen, könnte es einen Deadlock auslösen.
 (Gleiches Problem wie verschachtelte Semaphore.)
 Beide warten auf Freigabe des ReadLocks des anderen Threads, damit sie den WriteLock setzen können.
+
+
+Aufgabe 3b
+Siehe Ordner aufgabe3b
