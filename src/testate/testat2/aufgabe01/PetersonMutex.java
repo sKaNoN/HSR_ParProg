@@ -1,9 +1,9 @@
 package testate.testat2.aufgabe01;
 
 public class PetersonMutex {
-	private boolean state0 = false;
-	private boolean state1 = false;
-	private int turn = 0;
+	private volatile boolean state0 = false;
+	private volatile boolean state1 = false;
+	private volatile int turn = 0;
 
 	// acquire lock by thread 0
 	public void thread0Lock() {

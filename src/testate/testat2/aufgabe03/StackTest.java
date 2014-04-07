@@ -12,7 +12,7 @@ public class StackTest {
 		test(new LockFreeStack<Integer>());
 	}
 
-	private static void test(Stack<Integer> stack) throws InterruptedException {
+	private static void test(final Stack<Integer> stack) throws InterruptedException {
 		long start = System.currentTimeMillis();
 		List<Thread> allThreads = new ArrayList<>();
 		for (int i = 0; i < NOF_THREADS; i++) {
