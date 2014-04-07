@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StackTest {
 	private static final int NOF_THREADS = 100;
-	private static final int NOF_ELEMENTS = 1000000;
+	private static final int NOF_ELEMENTS = 10000;
 
 	public static void main(String[] args) throws InterruptedException {
 		test(new SynchronizedStack<Integer>());

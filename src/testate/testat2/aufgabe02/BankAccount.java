@@ -1,22 +1,24 @@
 package testate.testat2.aufgabe02;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class BankAccount {
-	private int balance = 0;
+	private AtomicInteger balance = new AtomicInteger(0);
 
-	public synchronized void deposit(int amount) {
-		balance += amount;
+	public void deposit(int amount) {
+		balance.addAndGet(amount);
 	}
 
-	public synchronized boolean withdraw(int amount) {
-		if (amount <= this.balance) {
-			balance -= amount;
-			return true;
-		} else {
-			return false;
-		}
+	public boolean withdraw(int amount) {
+		int currentBalance;	
+		do {
+			currentBalance = balance.get();
+			if (currentBalance < amount) return false;
+		} while (!balance.compareAndSet(currentBalance, currentBalance - amount));
+		return true;
 	}
 
-	public synchronized int getBalance() {
-		return balance;
+	public int getBalance() {
+		return balance.get();
 	}
 }
